@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FocusBoard - Dein Produktivitäts-Dashboard</title>
+    <meta
+      name="description"
+      content="Responsives Dashboard für Aufgaben, Fokuszeit und Fortschritt."
+    />
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <!-- type="module" lädt das Skript automatisch nach dem HTML (wie defer)-->
+    <script type="module" src="js/main.js"></script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+    <div class="app">
+      <header class="app-header">
+        <a class="logo" href="/">FocusBoard</a>
+        <button
+          class="btn btn--ghost"
+          type="button"
+          id="theme-toggle"
+          aria-pressed="false"
+        >
+          Dark Mode
+        </button>
+      </header>
+
+      <nav class="app-nav" aria-label="Hauptnavigation">
+        <ul role="list">
+          <li><a href="#overview" aria-current="page">Übersicht</a></li>
+          <li><a href="#tasks">Aufgaben</a></li>
+          <li><a href="#activity">Aktivität</a></li>
+        </ul>
+      </nav>
+
+      <main id="main" class="app-main" tabindex="-1">
+        <h1>Guten Morgen, Max</h1>
+
+        <section id="overview" aria-labelledby="overview-title">
+          <h2 id="overview-title">Übersicht</h2>
+          <ul class="stats" role="list">
+            <li class="card stat">
+              <p class="stat__label">Offene Aufgaben</p>
+              <p class="stat__value" id="stat-open">0</p>
+            </li>
+            <li class="card stat">
+              <p class="stat__label">Erledigt</p>
+              <p class="stat__value" id="stat-done">0</p>
+            </li>
+            <li class="card stat">
+              <p class="stat__label">Fokuszeit heute</p>
+              <p class="stat__value">2 h 15 min</p>
+            </li>
+            <li class="card stat">
+              <p class="stat__label">Wochenziel</p>
+              <p class="stat__value">68 %</p>
+            </li>
+          </ul>
+        </section>
+
+        <section id="tasks" aria-labelledby="tasks-title">
+          <h2 id="tasks-title">Aufgaben</h2>
+          <form class="task-form" id="task-form" novalidate>
+            <label for="task-input">Neue Aufgabe</label>
+            <input
+              id="task-input"
+              name="title"
+              type="text"
+              autocomplete="off"
+            />
+            <button class="btn btn--primary" type="submit">Hinzufügen</button>
+          </form>
+          <div class="filters" role="group" aria-label="Aufgaben filtern">
+            <button
+              type="button"
+              class="chip"
+              data-filter="all"
+              aria-pressed="true"
+            >
+              Alle
+            </button>
+            <button
+              type="button"
+              class="chip"
+              data-filter="open"
+              aria-pressed="false"
+            >
+              Offen
+            </button>
+            <button
+              type="button"
+              class="chip"
+              data-filter="done"
+              aria-pressed="false"
+            >
+              Erledigt
+            </button>
+          </div>
+          <!-- Live-Region: Screenreader lesen Änderungen hier automatisch vor -->
+          <p class="sr-only" id="task-status" aria-live="polite"></p>
+          <ul class="task-list" id="task-list" role="list"></ul>
+        </section>
+        <section id="activity" aria-labelledby="activity-title">
+          <h2 id="activity-title">Letzte Aktivität</h2>
+          <ol class="activity" role="list">
+            <li>
+              <time datetime="2026-10-23T09:15">09:15</time> Aufgabe
+              „Figma-Tokens anlegen“ erledigt
+            </li>
+            <li>
+              <time datetime="2026-10-23T08:40">08:40</time> Fokus-Session 25
+              min abgeschlossen
+            </li>
+            <li>
+              <time datetime="2026-10-22T17:05">gestern</time> Wochenziel
+              aktualisiert
+            </li>
+          </ol>
+        </section>
+      </main>
+      <footer class="app-footer">
+        <p>
+          © 2026 Sabrina Fr. ·
+          <a href="https://github.com/DEINNAME/focusboard"
+            >Quellcode auf GitHub</a
+          >
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>
